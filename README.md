@@ -1,79 +1,37 @@
-# Alpaca Health Software Engineering Take-Home Project
+# Rohit's Alpaca Health Software Engineering Take-Home Project
 
-### Project Description
+## OpenAI Key
 
-Visit this link for details:
-[https://harviio.notion.site/Alpaca-Health-Eng-Take-home-Project-1411bfc50b90803382d4cae01f9bcf18?pvs=4](https://www.notion.so/harviio/ABA-Session-Note-Generator-Take-Home-Project-1411bfc50b90803382d4cae01f9bcf18?pvs=4)
+Be sure to update the .env file with your OpenAI API Key.
 
-## Setup Instructions
+### Note About `npm install`
 
-### Backend Setup (Python 3.11+ required)
+In this case, since I'm using React v19, the npm install command when setting up the front-end will be as follows:
 
-```bash
-# Create and activate virtual environment
-python -m venv alpaca_venv
-source alpaca_venv/bin/activate  # or `venv\Scripts\activate` on Windows
+`npm install --legacy-peer-deps`
 
-# Install dependencies
-pip install -r requirements.txt
+### Application Instructions and Usage
 
-# Start the server
-fastapi dev main.py
-```
+After setting up the application using the normal methods, you can access the front-end at localhost:3000.
 
-### Frontend Setup (Node.js 18+ required)
+1. Fill out the form on the homepage containing your notes and metadata parameters. There is error handling within the form to check that all form inputs are included.
 
-```bash
-# Navigate to frontend directory
-cd frontend
+2. Click the Generate Summary button and wait for the popup modal containing the editable generated summary (using OpenAI) to appear.
 
-# Install dependencies
-npm install
+3. Make any edits that you wish to make to the summary and click the Save button to save your changes to the database (TinyDB).
 
-# Start the development server
-npm run dev
-```
+4. Click on the Search link in the Navbar to access the Search page.
 
-The application will be available at:
+5. The Search page enables you to search all generated summaries by Therapist Name (case sensitive). Enter the therapist name you would like to search all summaries for and click the Search button.
 
-- Frontend: http://localhost:3000
-- Backend API: http://localhost:8000
-- API Documentation: http://localhost:8000/docs
+6. The UI will return a list of summaries associated with the therapist name you searched by. Brief information is viewable within each list item.
 
-## Default Project Structure
+7. Each summary in the list can be deleted using the Delete button or viewed and edited using the View button.
 
-- `frontend/`: Next.js application
-  - `src/components/`: Reusable React components
-  - `src/app/`: Next.js app router pages
-- `backend/`: FastAPI application
-  - `app/main.py`: API endpoints
+8. Clicking the Delete button for the summary will result in the summary being deleted from the database and the UI being refreshed with the updated list of results.
 
-## Development
+9. Clicking the View button will once again open a popup modal containing fields to edit the metadata for the session as well as the generated summary itself.
 
-- Frontend runs on port 3000 with hot reload enabled
-- Backend runs on port 8000 with auto-reload enabled
-- API documentation available at http://localhost:8000/docs
+10. Clicking the Save Changes button in the popup modal will immediately update the database with the new changes and refresh the list to reflect the new changes.
 
-## Submission
-
-1. Create a private GitHub repository
-2. Implement your solution
-3. Document any assumptions or trade-offs
-4. Include instructions for running your solution
-5. Send us the repository link
-
-## Time Expectation
-
-- Expected time: 3-4 hours
-- Please don't spend more than 6 hours
-
-## Evaluation Criteria
-
-| Category | Details | Weight |
-|----------|---------|--------|
-| Product sense and scoping | - Final product decisions alignment with requirements<br>- Appropriate deprioritization of non-crucial parts | 10% |
-| Technology selection | - Right tools chosen for the job | 10% |
-| Technical Level | - Well-organized and intuitive code structure<br>- Modular code (e.g., React components used)<br>- Proper use of React hooks<br>- Good state management<br>- Correct use of useEffect hooks | 40% |
-| Craft and Quality | - Usable and intuitive UI/UX<br>- Presence and severity of bugs | 20% |
-| Documentation | - Clear communication of logic and technical decisions in README | 10% |
-| Testing | - Presence of tests<br>- Quality and robustness of tests | 10% |
+11. Clicking the Home link in the Navbar will allow you to return back to the homepage and repeat Steps 1-10 as desired.
